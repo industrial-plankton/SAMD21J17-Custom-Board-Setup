@@ -20,13 +20,14 @@ then download the source code, configure, make and install.
 ```bash
 git clone http://openocd.zylin.com/openocd
 cd openocd
+git checkout -b 1.2.0
 ./bootstrap
 ./configure --enable-sysfsgpio --enable-bcm2835gpio
 make
 sudo make install
 ```
 
-check `/usr/local/share/openocd/scripts/interface/raspberrypi2-native.cfg` for the pin outs, it lists the native GPIO numbers not the renumbered pi pin numbers. and <https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/> for physical reference
+check `/usr/local/share/openocd/scripts/interface/raspberrypi-gpio-connector.cfg` for the pin outs, it lists the native GPIO numbers not the renumbered pi pin numbers. and <https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/> for physical reference
 
 ## Find bootloader
 
@@ -195,5 +196,5 @@ If you are using other build flags be sure to add them on separate lines, and be
 I've also found PlatformIO's upload button doesn't like to work, Ardunio's did so i copied its command and use it manually
 
 ```bash
-C:\Users\User\AppData\Local\Arduino15\packages\adafruit\tools\bossac\1.8.0-48-gb176eee/bossac -i -d --port=COM3 -U -i --offset=0x2000 -w -v C:\Users\User\Documents\SpectrumControllerPIO\.pio\build\adafruit_feather_m0\firmware.bin -R
+C:\Users\User\AppData\Local\Arduino15\packages\adafruit\tools\bossac\1.8.0-48-gb176eee/bossac -i -d --port=COM3 -U -i --offset=0x2000 -w -v .\.pio\build\adafruit_feather_m0\firmware.bin -R
 ```
